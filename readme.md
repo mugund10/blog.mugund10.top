@@ -3,4 +3,5 @@
 
 ![](/images/content.png)
 
-[it lives here](blog.openwaves.in/blog)
+###   Its Lives  [here](http://blog.openwaves.in/blog/)
+
