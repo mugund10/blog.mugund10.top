@@ -42,7 +42,7 @@ func main() {
 	mux.HandleFunc("GET /blog/{slug}", PostHandler(gh))
 	//slug represent folder
 	mux.HandleFunc("GET /{slug}/", blogHandler(gh))
-	mux.HandleFunc("GET /", PostHandler(rr))
+	mux.HandleFunc("GET /", RootHandler(rr))
 
 	log.Println("server starting on port 80")
 	if err := http.ListenAndServe("0.0.0.0:80", mux); err != nil {
@@ -279,3 +279,45 @@ func blogHandler(sl SlugReader) http.HandlerFunc {
 	}
 }
 
+func RootHandler(sl SlugReader) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var post Post
+		slug := "root"
+		
+		
+		postMd, err := sl.ReadFile(slug)
+		if err != nil {
+			http.Error(w, "post not found", http.StatusNotFound)
+			return
+		}
+		rest, err := frontmatter.Parse(strings.NewReader(postMd), &post)
+		if err != nil {
+			http.Error(w, "Error parsing frontmatter", http.StatusInternalServerError)
+			return
+		}
+
+		mdRenderer := goldmark.New(
+			goldmark.WithExtensions(
+				highlighting.NewHighlighting(highlighting.WithStyle("dracula")),
+			),
+		)
+
+		var buf bytes.Buffer
+		//goldmark convert function
+		if err := mdRenderer.Convert(rest, &buf); err != nil {
+			http.Error(w, "Error Converting Markdown", http.StatusInternalServerError)
+			return
+		}
+
+		tpl, err := template.ParseFiles("html/post.html")
+		if err != nil {
+			http.Error(w, "Error parsing template", http.StatusInternalServerError)
+			return
+		}
+
+		post.Content = template.HTML(buf.String())
+		err = tpl.Execute(w, post)
+		//fmt.Fprintf(w, postMd)
+		//io.Copy(w, &buf)
+	}
+}
