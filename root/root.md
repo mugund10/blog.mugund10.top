@@ -1,6 +1,6 @@
 +++
-title = "வணக்கம் டா மாப்ள"
-description = "கைய குடு சகல"
+title = "STOP IT"
+description = "HIDDEN AGENDA"
 date = 2024-03-03
 url = "/"
 
@@ -12,4 +12,4 @@ email = "bjmugundhan@gmail.com"
 
 
 
-![](https://c.tenor.com/KkhZmy_awtcAAAAC/tenor.gif)
+![](https://c.tenor.com/wmSc-TlZvTwAAAAC/tenor.gif)
