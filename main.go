@@ -28,6 +28,13 @@ func main() {
 		Dir:   "blog",
 		Token: os.Getenv("GITHUB_TOKEN"),
 	}
+
+	rr := GitFiles{
+		Owner: "mugund10",
+		Repo:  "blog.openwaves.in",
+		Dir:   "",
+		Token: os.Getenv("GITHUB_TOKEN"),
+	}
 	//for local repo
 	//fs := LocalFiles{}
 
@@ -35,6 +42,7 @@ func main() {
 	mux.HandleFunc("GET /blog/{slug}", PostHandler(gh))
 	//slug represent folder
 	mux.HandleFunc("GET /{slug}/", blogHandler(gh))
+	mux.HandleFunc("GET /", PostHandler(rr))
 
 	log.Println("server starting on port 80")
 	if err := http.ListenAndServe("0.0.0.0:80", mux); err != nil {
@@ -168,7 +176,8 @@ func PostHandler(sl SlugReader) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var post Post
 		slug := r.PathValue("slug")
-		log.Println("postHandler", slug)
+		
+		
 		postMd, err := sl.ReadFile(slug)
 		if err != nil {
 			http.Error(w, "post not found", http.StatusNotFound)
@@ -269,3 +278,4 @@ func blogHandler(sl SlugReader) http.HandlerFunc {
 		}
 	}
 }
+
