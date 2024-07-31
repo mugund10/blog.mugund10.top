@@ -12,7 +12,4 @@ email = "bjmugundhan@gmail.com"
 
 
 
-<p align="center">
-  <img src="https://c.tenor.com/wmSc-TlZvTwAAAAC/tenor.gif" alt="Centered Image" />
-</p>
-
+![](https://c.tenor.com/0Njx9n36fRQAAAAC/tenor.gif)
