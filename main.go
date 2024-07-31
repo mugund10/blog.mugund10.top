@@ -24,8 +24,8 @@ func main() {
 	//for github repo
 	gh := GitFiles{
 		Owner: "mugund10",
-		Repo:  "tba",
-		Dir:   "tba",
+		Repo:  "blog.openwaves.in",
+		Dir:   "blog",
 		Token: os.Getenv("GITHUB_TOKEN"),
 	}
 	//for local repo
@@ -37,7 +37,7 @@ func main() {
 	mux.HandleFunc("GET /{slug}/", blogHandler(gh))
 
 	log.Println("server starting on port 80")
-	if err := http.ListenAndServe(":80", mux); err != nil {
+	if err := http.ListenAndServe("0.0.0.0:80", mux); err != nil {
 		log.Fatal(err)
 	}
 }
