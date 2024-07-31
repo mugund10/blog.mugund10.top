@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <title>{{.Title}} - //blog.openwaves.in</title>
+</head>
+<body class="bg-gray-100">
+  <nav class="flex items-center justify-between bg-gray-800 p-4 md:p-6 mb-4">
+    <div class="flex items-center flex-shrink-0 text-white">
+      <a href="/blog/" class="font-bold text-xl md:text-3xl lg:text-4xl tracking-tight no-underline">//blog.openwaves.in</a>
+    </div>
+  </nav>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center pt-6 pb-0">
+      <div class="flex flex-wrap justify-center gap-6 w-full max-w-screen-lg">
+        {{range .Blogs}}
+        <div class="bg-white border border-gray-200 shadow-lg rounded-lg p-6 mb-8 w-full">
+          <a href="{{.Url}}" class="no-underline">
+            <div class="p-6">
+              <div class="text-gray-900 hover:text-black hover:underline text-xl sm:text-2xl mb-4">{{.Title}}</div>
+              <p class="text-gray-700 text-base">{{.Description}}</p>
+            </div>
+          </a>
+          <div class="bg-gray-100 p-4 text-center text-gray-600 text-sm">
+            <a href="{{.Url}}" class="hover:underline">Read more</a>
+          </div>
+        </div>
+        {{end}}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
