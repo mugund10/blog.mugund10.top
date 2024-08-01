@@ -46,8 +46,11 @@ func main() {
 	mux.HandleFunc("GET /{slug}/", blogHandler(gh))
 	mux.HandleFunc("GET /", RootHandler(rr))
 
-	log.Println("server starting on port 80")
-	if err := http.ListenAndServe("0.0.0.0:80", mux); err != nil {
+	log.Println("server starting on port 443")
+	// if err := http.ListenAndServe("0.0.0.0:80", mux); err != nil {
+	// 	log.Fatal(err)
+	// }
+	if err := http.ListenAndServeTLS("0.0.0.0:443","/etc/letsencrypt/live/blog.openwaves.in/fullchain.pem","/etc/letsencrypt/live/blog.openwaves.in/privkey.pem",mux); err != nil {
 		log.Fatal(err)
 	}
 }
