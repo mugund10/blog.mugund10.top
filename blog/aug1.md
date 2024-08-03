@@ -58,8 +58,8 @@ email = "bjmugundhan@gmail.com"
 
 
 
-ok thats it and here the sample full response that a go server usually gets
-``&{GET / HTTP/1.1 1 1 map[Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8] Accept-Encoding:[gzip, deflate, br, zstd] Accept-Language:[en-US,en;q=0.5] Connection:[keep-alive] Cookie:[userToken=9fzz3o7786gm76adfwlth; wh_theme=light; cookie-consent=true] Priority:[u=0, i] Sec-Fetch-Dest:[document] Sec-Fetch-Mode:[navigate] Sec-Fetch-Site:[none] Sec-Fetch-User:[?1] Upgrade-Insecure-Requests:[1] User-Agent:[Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0]] {} <nil> 0 [] false localhost:8102 map[] map[] <nil> map[] 127.0.0.1:36302 / <nil> <nil> <nil> 0xc00008c0a0 0xc00012a180 [] map[]}`` i mapped it according to same struct fields of [http.Request](https://pkg.go.dev/net/http#Request)
+here is the sample full response 
+``{GET / HTTP/1.1 1 1 map[Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8] Accept-Encoding:[gzip, deflate, br, zstd] Accept-Language:[en-US,en;q=0.5] Connection:[keep-alive] Cookie:[userToken=9fzz3o7786gm76adfwlth; wh_theme=light; cookie-consent=true] Priority:[u=0, i] Sec-Fetch-Dest:[document] Sec-Fetch-Mode:[navigate] Sec-Fetch-Site:[none] Sec-Fetch-User:[?1] Upgrade-Insecure-Requests:[1] User-Agent:[Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0]] {} <nil> 0 [] false localhost:8102 map[] map[] <nil> map[] 127.0.0.1:36302 / <nil> <nil> <nil> 0xc00008c0a0 0xc00012a180 [] map[]}`` i mapped it according to same struct fields of [http.Request](https://pkg.go.dev/net/http#Request)
 
 ```GO
 type Request struct {
@@ -90,3 +90,9 @@ type Request struct {
 ```
 
 #   summary
+
+-   In this guide, we built a basic Go web server that responds with your IP address. We explored how web servers work and utilized Go's net/http package for a straightforward setup.
+
+-   Feel free to visit mugund10.openwaves.in/ip to see the implementation in action. This example offers a hands-on look at handling web requests and responses. Whether you're new to web development or experimenting with new concepts, it's a valuable starting point.
+
+![](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExem55MWtqamJ2dzFxczN4bTl5NzY3ZHM0ODVzZGpiejl0OHA5d2loMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/w89ak63KNl0nJl80ig/giphy.webp)
