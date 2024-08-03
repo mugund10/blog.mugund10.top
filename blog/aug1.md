@@ -19,4 +19,9 @@ email = "bjmugundhan@gmail.com"
 
 # Whats a Webserver ?
 
-*   1. it serves something that a 
+*   A web server is a program that delivers web content over HTTP by handling requests from clients. It works by listening on a specific port for incoming connections. When a client, like a web browser, wants to access a website, it first sends a request to a DNS server to find the website’s address. This request then travels through the internet, passing through routers and reaching the web server.
+![](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExa20zcGE2Z3Q1cDBkN2FkbjM0dnYzdG84aHFldnV0b2k3Y3Z3NGgzeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d2BCGOX8usZK0zdxw5/giphy.webp)
+
+*   So, how does the server handle this? It uses its operating system and network hardware to manage connections and process requests. Once the server receives the request, it generates a response, which may include the web page or other content. This response is then sent back through the same network route to the client's browser, allowing the user to view the requested content.
+
+![](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnJ2ZXhwZmYycDc4dzM4Y21zejNyMm15bjQyZTg5NmptYmRtMWI3bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AqV8uSb8ptxyo7Wyog/giphy.webp)
