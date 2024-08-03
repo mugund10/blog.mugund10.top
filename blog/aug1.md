@@ -25,3 +25,68 @@ email = "bjmugundhan@gmail.com"
 *   So, how does the server handle this? It uses its operating system and network hardware to manage connections and process requests. Once the server receives the request, it generates a response, which may include the web page or other content. This response is then sent back through the same network route to the client's browser, allowing the user to view the requested content.
 
 ![](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnJ2ZXhwZmYycDc4dzM4Y21zejNyMm15bjQyZTg5NmptYmRtMWI3bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AqV8uSb8ptxyo7Wyog/giphy.webp)
+
+#   Lets GO Now
+
+*   Go has a built-in package for HTTP, which makes setting up a web server straight forward and easy. Here’s a simple example of how you can create a basic web server in Go:
+
+    ```GO
+    package main
+
+    import (
+        "fmt"
+        "net/http"
+    )
+
+    func handler(w http.ResponseWriter, r *http.Request) {
+        fmt.Fprintf(w, "Your IP address is: %s", r.RemoteAddr)
+    }
+
+    func main() {
+        http.HandleFunc("/", handler)
+        fmt.Println("Starting server on :8080...")
+        http.ListenAndServe(":8080", nil)
+    }
+
+    ```
+
+- `http.ListenAndServe(":8080", nil)` starts the server and listens on port 8080. The second argument, `nil`, indicates that we are using the default `ServeMux` for routing.
+- Since we didn’t create a custom multiplexer (mux), the default mux is used. This is why we passed `nil` as the second argument. The `http.HandleFunc` function maps the root path ("/") to the `handler` function, which will be called for all GET requests to this path.
+- The `handler` function writes the client’s IP address to the response, allowing us to see the incoming IP address for each request.
+
+![](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2lpZ2s0cHplM2syYTg1cmg3ajA2ZnNoaDNrYmNmNXB3YXIzdHBiOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/U634xW7LKU0sU/giphy.webp)
+
+
+
+ok thats it and here the sample full response that a go server usually gets
+``&{GET / HTTP/1.1 1 1 map[Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8] Accept-Encoding:[gzip, deflate, br, zstd] Accept-Language:[en-US,en;q=0.5] Connection:[keep-alive] Cookie:[userToken=9fzz3o7786gm76adfwlth; wh_theme=light; cookie-consent=true] Priority:[u=0, i] Sec-Fetch-Dest:[document] Sec-Fetch-Mode:[navigate] Sec-Fetch-Site:[none] Sec-Fetch-User:[?1] Upgrade-Insecure-Requests:[1] User-Agent:[Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0]] {} <nil> 0 [] false localhost:8102 map[] map[] <nil> map[] 127.0.0.1:36302 / <nil> <nil> <nil> 0xc00008c0a0 0xc00012a180 [] map[]}`` i mapped it according to same struct fields of [http.Request](https://pkg.go.dev/net/http#Request)
+
+```GO
+type Request struct {
+    Method     string            // "GET"
+    RequestURI string            // "/"
+    Proto      string            // "HTTP/1.1"
+    ProtoMajor int               // 1
+    ProtoMinor int               // 1
+    Header     Header            // map[Accept:[text/html,...] ...]
+    Body       io.ReadCloser     // <nil>
+    GetBody    func() (io.ReadCloser, error) // <nil>
+    ContentLength int64          // 0
+    TransferEncoding []string   // []
+    Close      bool              // false
+    Host       string            // "localhost:8102"
+    Form       url.Values        // map[]
+    PostForm   url.Values        // map[]
+    MultipartForm *multipart.Form // <nil>
+    Trailer    Header            // map[]
+    RemoteAddr string            // "127.0.0.1:36302"
+    RequestURI string            // "/"
+    TLS        *tls.ConnectionState // <nil>
+    Cancel     <-chan struct{}   // <nil>
+    Response   *http.Response    // <nil>
+    ctx        context.Context   // 0xc00008c0a0
+    // Additional fields for request context and other details
+}
+```
+
+#   summary
