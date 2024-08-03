@@ -91,7 +91,11 @@ type Request struct {
 
 #   summary
 
--   In this guide, we built a basic Go web server that responds with your IP address. We explored how web servers work and utilized Go's net/http package for a straightforward setup.
+-   In this guide, we built a basic Go web server that responds with your IP address. We explored how web servers work and utilized Go's net/http package for a straight forward setup We didn’t cover everything, though:
+
+    1.  HTTP Methods: We only used GET. There are others like POST and PUT.
+    2.  Error Handling: It’s important to handle errors when starting the server.
+    -   For more info, check out the [Go documentation](https://go.dev/doc/).
 
 -   Feel free to visit mugund10.openwaves.in/ip to see the implementation in action. This example offers a hands-on look at handling web requests and responses. Whether you're new to web development or experimenting with new concepts, it's a valuable starting point.
 
