@@ -263,7 +263,7 @@ func blogHandler(sl SlugReader) http.HandlerFunc {
 				return
 			}
 
-			log.Println(filemd)
+			log.Println(filemd ,"from" ,r.RemoteAddr)
 		}
 
 		data := PageData{
