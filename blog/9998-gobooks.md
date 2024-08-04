@@ -2,7 +2,7 @@
 title = "Essential Books for Mastering Golang and System Engineering"
 description = "Embarking on a career as a Golang engineer or deepening your expertise in system engineering requires a robust understanding of various technical disciplines. To excel in these fields, here’s a curated list of must-read books that cover essential aspects of Golang programming, Linux system administration, distributed systems, performance optimization, and secure software development."
 date = 2024-08-04
-url = "/blog/0002"
+url = "/blog/9998-gobooks"
 
 [author]
 name = "mugund10"
