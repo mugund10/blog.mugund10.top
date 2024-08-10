@@ -21,30 +21,30 @@ import (
 
 func main() {
 	mux := http.NewServeMux()
-	//for github repo
-	gh := GitFiles{
-		Owner: "mugund10",
-		Repo:  "blog.openwaves.in",
-		Dir:   "blog",
-		Token: os.Getenv("GITHUB_TOKEN"),
-	}
+	// //for github repo
+	// gh := GitFiles{
+	// 	Owner: "mugund10",
+	// 	Repo:  "blog.openwaves.in",
+	// 	Dir:   "blog",
+	// 	Token: os.Getenv("GITHUB_TOKEN"),
+	// }
 
-	rr := GitFiles{
-		Owner: "mugund10",
-		Repo:  "blog.openwaves.in",
-		Dir:   "root",
-		Token: os.Getenv("GITHUB_TOKEN"),
-	}
+	// rr := GitFiles{
+	// 	Owner: "mugund10",
+	// 	Repo:  "blog.openwaves.in",
+	// 	Dir:   "root",
+	// 	Token: os.Getenv("GITHUB_TOKEN"),
+	// }
 
 	
 	//for local repo
-	//fs := LocalFiles{}
+	fs := LocalFiles{}
 
 	//slug represents filename
-	mux.HandleFunc("GET /blog/{slug}", PostHandler(gh))
+	mux.HandleFunc("GET /blog/{slug}", PostHandler(fs))
 	//slug represent folder
-	mux.HandleFunc("GET /{slug}/", blogHandler(gh))
-	mux.HandleFunc("GET /", RootHandler(rr))
+	mux.HandleFunc("GET /{slug}/", blogHandler(fs))
+	mux.HandleFunc("GET /", RootHandler(fs))
 
 	log.Println("server starting on port 443")
 	// if err := http.ListenAndServe("0.0.0.0:80", mux); err != nil {
@@ -325,4 +325,10 @@ func RootHandler(sl SlugReader) http.HandlerFunc {
 		//fmt.Fprintf(w, postMd)
 		//io.Copy(w, &buf)
 	}
+}
+
+func mugilan() http.HandlerFunc{
+return func(w http.ResponseWriter, r *http.Request){
+	fmt.Fprintf(w,"")
+}
 }
