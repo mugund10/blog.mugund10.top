@@ -47,7 +47,7 @@ func main() {
 	mux.HandleFunc("GET /", RootHandler(fs))
 
 	log.Println("server starting on port 443")
-	// if err := http.ListenAndServe("0.0.0.0:80", mux); err != nil {
+	// if err := http.ListenAndServe("0.0.0.0:8110", mux); err != nil {
 	// 	log.Fatal(err)
 	// }
 	if err := http.ListenAndServeTLS("0.0.0.0:443","/etc/letsencrypt/live/blog.openwaves.in/fullchain.pem","/etc/letsencrypt/live/blog.openwaves.in/privkey.pem",mux); err != nil {
@@ -94,7 +94,14 @@ type PageData struct {
 }
 
 func (fr LocalFiles) ReadFile(slug string) (string, error) {
+	
 	filePath := filepath.Join("blog", slug+".md")
+	
+	// root folder only
+	if slug == "root" {
+		filePath = 	filepath.Join("root", slug+".md")
+	}
+	
 	f, err := os.Open(filePath)
 	if err != nil {
 		return "", err
