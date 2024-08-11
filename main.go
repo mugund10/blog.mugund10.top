@@ -203,7 +203,7 @@ func PostHandler(sl SlugReader) http.HandlerFunc {
 
 		mdRenderer := goldmark.New(
 			goldmark.WithExtensions(
-				highlighting.NewHighlighting(highlighting.WithStyle("dracula")),
+				highlighting.NewHighlighting(highlighting.WithStyle("solarized-dark256")),
 			),
 		)
 

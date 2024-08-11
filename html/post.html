@@ -4,25 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-  <title>{{.Title}} - //blog.openwaves.in</title>
+  <title>{{.Title}} - blog.openwaves.in</title>
 </head>
-<body class="bg-gray-100">
- <nav class="flex items-center justify-between bg-gray-800 p-4 md:p-6 mb-4">
-  <div class="flex items-center flex-shrink-0 text-white">
-    <a href="/blog/" class="font-bold text-xl md:text-3xl lg:text-4xl tracking-tight no-underline"> //blog.openwaves.in </a>
-  </div>
-  
+<body class="bg-gray-200">
+  <nav class="flex items-center justify-between bg-violet-600 p-4 md:p-6 mb-4">
+    <div class="flex items-center flex-shrink-0 text-blue-200 hover:text-gray-200   ">
+      <a href="/blog/" class="font-bold  text-xl md:text-3xl lg:text-4xl tracking-tight no-underline">blog.openwaves.in</a>
+    </div>
   </nav>
   
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="bg-white border border-gray-200 shadow-lg rounded-lg p-6 mb-8">
-      <h1 class="text-3xl md:text-4xl font-bold text-center mb-6">{{.Title}}</h1>
+    <div class="bg-gray-100  shadow-lg rounded-lg p-6 mb-8">
+      <h1 class="text-5xl md:text-4xl font-bold text-gray-900 text-center mb-6">{{.Title}}</h1>
       {{with .Author}}
-      <div class="text-center mt-4">
-        <p class="text-gray-600">Author: <a href="mailto:{{.Email}}" class="text-blue-500 hover:underline">{{.Name}}</a></p>
+      <div class="text-center  mt-4">
+        <p class="text-blue-600">Author: <a href="mailto:{{.Email}}" class="text-yellow-600 hover:underline">{{.Name}}</a></p>
       </div>
       {{end}}
-      <div class="prose max-w-full mt-6">
+      <div class=" text-gray-600 prose max-w-full mt-6 ">
         {{.Content}}
       </div>
     </div>

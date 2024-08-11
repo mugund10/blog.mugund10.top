@@ -1,6 +1,6 @@
 +++
-title = "GUYS ITS WORKING"
-description = "finally its working"
+title = "The story of my blog"
+description = "hell on killer"
 date = 2024-03-03
 url = "/"
 
