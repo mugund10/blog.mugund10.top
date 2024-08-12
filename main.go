@@ -41,10 +41,10 @@ func main() {
 	fs := LocalFiles{}
 
 	//slug represents filename
-	mux.HandleFunc("GET /blog/{slug}", PostHandler(fs))
+	mux.HandleFunc("GET /posts/{slug}", PostHandler(fs))
 	//slug represent folder
-	mux.HandleFunc("GET /{slug}/", blogHandler(fs))
-	mux.HandleFunc("GET /", RootHandler(fs))
+	mux.HandleFunc("GET /", blogHandler(fs))
+	//mux.HandleFunc("GET /", RootHandler(fs))
 
 	log.Println("server starting on port 443")
 	// if err := http.ListenAndServe("0.0.0.0:8110", mux); err != nil {
@@ -95,7 +95,7 @@ type PageData struct {
 
 func (fr LocalFiles) ReadFile(slug string) (string, error) {
 	
-	filePath := filepath.Join("blog", slug+".md")
+	filePath := filepath.Join("posts", slug+".md")
 	
 	// root folder only
 	if slug == "root" {
@@ -230,8 +230,15 @@ func blogHandler(sl SlugReader) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var blog []Blog
 
-		slug := r.PathValue("slug")
-		log.Println("BlogHandler", slug)
+		// slug := r.PathValue("slug")
+		// log.Println("BlogHandler", slug)
+
+		slug := "posts"
+		//log.Println("path",r.URL.Path)
+		if r.URL.Path != "/" {
+		 	http.Error(w, "not found", http.StatusNotFound)
+		 	return
+		 }
 
 		filesMd, err := sl.ReadFold(slug)
 		if err != nil {
@@ -250,7 +257,7 @@ func blogHandler(sl SlugReader) http.HandlerFunc {
 		for _, filemd := range filesMd {
 			var blo Blog
 			fi := filemd[:len(filemd)-3]
-			log.Println(fi)
+			//log.Println(fi)
 			postMarkdown, err := sl.ReadFile(fi)
 			if err != nil {
 				// TODO: Handle different errors in the future
@@ -270,7 +277,7 @@ func blogHandler(sl SlugReader) http.HandlerFunc {
 				return
 			}
 
-			log.Println(filemd ,"from" ,r.RemoteAddr)
+			//log.Println(filemd ,"from" ,r.RemoteAddr)
 		}
 
 		data := PageData{
@@ -334,8 +341,3 @@ func RootHandler(sl SlugReader) http.HandlerFunc {
 	}
 }
 
-func mugilan() http.HandlerFunc{
-return func(w http.ResponseWriter, r *http.Request){
-	fmt.Fprintf(w,"")
-}
-}

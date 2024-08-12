@@ -5,26 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <title>{{.Title}} - blog.openwaves.in</title>
+  <style>
+    /* Ensure the body and html elements take up the full height of the viewport */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    /* Flexbox styles for the main container to push footer to the bottom */
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .flex-content {
+      flex: 1;
+    }
+  </style>
 </head>
-<body class="bg-gray-200">
+<body class="bg-gray-200 flex-container">
   <nav class="flex items-center justify-between bg-violet-600 p-4 md:p-6 mb-4">
-    <div class="flex items-center flex-shrink-0 text-blue-200 hover:text-gray-200   ">
-      <a href="/blog/" class="font-bold  text-xl md:text-3xl lg:text-4xl tracking-tight no-underline">blog.openwaves.in</a>
+    <div class="flex items-center flex-shrink-0 text-blue-200 hover:text-gray-200">
+      <a href="/" class="font-bold text-xl md:text-3xl lg:text-4xl tracking-tight no-underline">blog.openwaves.in</a>
     </div>
   </nav>
   
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="bg-gray-100  shadow-lg rounded-lg p-6 mb-8">
+  <div class="flex-content container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-gray-100 border shadow-lg rounded-lg p-6 mb-8">
       <h1 class="text-5xl md:text-4xl font-bold text-gray-900 text-center mb-6">{{.Title}}</h1>
       {{with .Author}}
-      <div class="text-center  mt-4">
+      <div class="text-center mt-4">
         <p class="text-blue-600">Author: <a href="mailto:{{.Email}}" class="text-yellow-600 hover:underline">{{.Name}}</a></p>
       </div>
       {{end}}
-      <div class=" text-gray-600 prose max-w-full mt-6 ">
+      <div class="text-gray-600 prose max-w-full mt-6">
         {{.Content}}
       </div>
     </div>
   </div>
+
+<!-- Footer -->
+<footer class="bg-violet-600 text-white text-center py-4">
+  <p class="text-sm">
+    Made with <span class="text-red-500">♥</span> using 
+    <a href="https://golang.org" target="_blank" class="text-green-300 underline">Go (Golang)</a> and enjoying the 
+    <a href="https://www.oracle.com/in/cloud/free/" target="_blank" class="text-yellow-300 underline">OCI free tier</a> life!
+  </p>
+</footer>
+
+
+
+  
 </body>
 </html>
