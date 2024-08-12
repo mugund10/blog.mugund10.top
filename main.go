@@ -192,7 +192,7 @@ func PostHandler(sl SlugReader) http.HandlerFunc {
 		
 		postMd, err := sl.ReadFile(slug)
 		if err != nil {
-			http.Error(w, "post not found", http.StatusNotFound)
+			RootHandler(sl).ServeHTTP(w, r)
 			return
 		}
 		rest, err := frontmatter.Parse(strings.NewReader(postMd), &post)
@@ -236,8 +236,8 @@ func blogHandler(sl SlugReader) http.HandlerFunc {
 		slug := "posts"
 		//log.Println("path",r.URL.Path)
 		if r.URL.Path != "/" {
-		 	http.Error(w, "not found", http.StatusNotFound)
-		 	return
+			RootHandler(sl).ServeHTTP(w, r)
+			return
 		 }
 
 		filesMd, err := sl.ReadFold(slug)

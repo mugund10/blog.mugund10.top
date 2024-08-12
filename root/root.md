@@ -1,6 +1,6 @@
 +++
-title = "The story of my blog"
-description = "hell on killer"
+title = "PAGE NOT FOUND"
+description = ""
 date = 2024-03-03
 url = "/"
 
@@ -12,6 +12,6 @@ email = "bjmugundhan@gmail.com"
 
 
 
-![](https://c.tenor.com/G3XQjDTtBEIAAAAd/tenor.gif)
+![](https://c.tenor.com/QQnCy4IETQ0AAAAC/tenor.gif)
 
 
