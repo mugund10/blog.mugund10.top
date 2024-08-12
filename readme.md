@@ -3,5 +3,5 @@
 
 ![](/images/content.png)
 
-###   Its Lives  [here](http://blog.openwaves.in/blog/)
+###   Its Lives  [here](https://blog.openwaves.in/)
 
